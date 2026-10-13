@@ -9,4 +9,5 @@ urlpatterns = [
     path('checkout/', views.checkout_view, name='checkout'),
     path('confirmation/<int:order_id>/', views.confirmation_view, name='confirmation'),
     path('logout/', views.logout_view, name='logout'),
+    path('redeem/', views.redeem_points, name='redeem_points'),
 ]
