@@ -35,15 +35,23 @@ A Django web application for self-ordering and rewards at Culver's.
 
 ## Project Structure
 Pouncing Pythons/
-├── db.py                    # Database layer (Kae)
-├── manage.py                # Django entry point
-├── culvers_project/         # Django settings
-└── checkout/                # Main app
-    ├── views.py
-    ├── urls.py
-    └── templates/
-        └── checkout/
-            ├── menu.html
-            ├── cart.html
-            ├── rewards.html
-            └── confirmation.html
+- db.py                    # Database layer (K)
+- manage.py                # Django entry point
+- README.md                # This file
+- culvers_project/         # Django settings package
+  - settings.py
+  - urls.py
+  - wsgi.py
+- checkout/                # Main app
+  - views.py               # Menu, cart, rewards, checkout views
+  - urls.py                # URL routes
+  - templates/
+    - checkout/
+      - menu.html
+      - cart.html
+      - rewards.html
+      - confirmation.html
+                menu.html
+                cart.html
+                rewards.html
+                confirmation.html
