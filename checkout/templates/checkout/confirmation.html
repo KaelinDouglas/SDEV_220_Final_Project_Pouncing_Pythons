@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Order Confirmed</title></head>
+<body>
+    <h1>Order #{{ order_id }} Confirmed</h1>
+    <p>Thank you, {{ customer_name }}!</p>
+
+    <h2>Items</h2>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.qty }} × {{ item.name }} — ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>Total: ${{ total }}</strong></p>
+    <p>Points earned: <strong>{{ points_earned }}</strong></p>
+    {% if new_balance is not None %}
+        <p>New rewards balance: <strong>{{ new_balance }}</strong></p>
+    {% endif %}
+
+    <p><a href="{% url 'menu' %}">Start a new order</a></p>
+</body>
+</html>
