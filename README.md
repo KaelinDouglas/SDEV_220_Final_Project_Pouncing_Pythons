@@ -33,6 +33,15 @@ A Django web application for self-ordering and rewards at Culver's.
 - m.myers@halloween.com (100 points)
 - p.wise@halloween.com (100 points)
 
+- ## Screenshots
+
+![Menu](screenshots/menu.png)
+![Cart](screenshots/cart.png)
+![Confirmation](screenshots/confirmation.png)
+![logging-in](screenshots/logging-in.png)
+![rewards-login](screenshots/rewards-login.png)
+
+
 ## Project Structure
 Pouncing Pythons/
 - db.py                    # Database layer (K)
