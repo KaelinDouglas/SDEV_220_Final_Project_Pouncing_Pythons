@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Redeem Points</title></head>
+<body>
+    <h1>Redeem Your Points</h1>
+
+    {% if messages %}
+        {% for m in messages %}<p><strong>{{ m }}</strong></p>{% endfor %}
+    {% endif %}
+
+    <p>Welcome, <strong>{{ customer.fullName }}</strong></p>
+    <p>Your balance: <strong>{{ balance }} points</strong></p>
+    <p>Rate: {{ points_per_redemption }} points = ${{ dollars_per_redemption }} off</p>
+
+    {% if current_discount %}
+        <p>Currently applied: <strong>${{ current_discount }} off</strong> ({{ current_points_used }} points)</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Points to redeem:
+            <input type="number"
+                   name="points"
+                   min="{{ points_per_redemption }}"
+                   step="{{ points_per_redemption }}"
+                   value="{{ points_per_redemption }}"
+                   required>
+        </label>
+        <button type="submit">Apply Discount</button>
+    </form>
+
+    <p><a href="{% url 'cart' %}">← Back to cart</a></p>
+</body>
+</html>
