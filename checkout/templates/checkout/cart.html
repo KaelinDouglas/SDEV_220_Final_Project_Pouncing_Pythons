@@ -16,8 +16,17 @@
         <button type="submit">Update Cart</button>
     </form>
 
-    <p><strong>Total: ${{ cart_total }}</strong></p>
+        <p><strong>Subtotal: ${{ cart_total }}</strong></p>
+
+    {% if discount %}
+        <p>Discount: <strong>-${{ discount }}</strong> ({{ points_used }} points)</p>
+        <p><strong>New Total: ${{ final_total }}</strong></p>
+    {% endif %}
+
     <p><a href="{% url 'menu' %}">← Back to menu</a></p>
+    {% if request.session.customer %}
+        <p><a href="{% url 'redeem_points' %}">Redeem Points</a></p>
+    {% endif %}
     <p><a href="{% url 'checkout' %}">Checkout →</a></p>
 </body>
 </html>
