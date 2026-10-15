@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Rewards Login</title></head>
+<body>
+    <h1>Rewards Login</h1>
+    {% if messages %}
+        {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Email: <input type="email" name="email" required></label>
+        <button type="submit">Look Up</button>
+    </form>
+    <p><a href="{% url 'menu' %}">← Back to menu</a></p>
+</body>
+</html>

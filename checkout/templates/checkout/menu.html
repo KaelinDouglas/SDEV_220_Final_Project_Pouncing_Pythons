@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>Culver's Self-Checkout</title></head>
+<body>
+    <h1>Welcome to Culver's</h1>
+
+    {% if messages %}
+        {% for m in messages %}<p><strong>{{ m }}</strong></p>{% endfor %}
+    {% endif %}
+
+    {% if request.session.customer %}
+    <p>
+        Logged in as {{ request.session.customer.fullName }} — {{ request.session.customer.pointsBalance }} points
+        <a href="{% url 'logout' %}">(Log out)</a>
+    </p>
+{% else %}
+    <p><a href="{% url 'rewards_login' %}">Log in for rewards</a></p>
+{% endif %}
+
+    <h2>Menu</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.name }} — ${{ item.price }}
+                <a href="{% url 'add_to_cart' item.itemId %}">Add</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        <a href="{% url 'cart' %}">View Cart ({{ cart_count }}) — ${{ cart_total }}</a>
+    </p>
+</body>
+</html>
