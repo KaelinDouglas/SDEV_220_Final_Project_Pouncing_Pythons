@@ -163,6 +163,21 @@ def get_customer_by_email(email: str) -> dict |None:        ###Looks up test cus
         print(f"Database error in get_customer_by_email: {e}")
         return None
     
+def update_rewards_balance(customer_id: int, new_balance: int) -> bool:
+    try:
+        with get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                UPDATE RewardsAccount
+                SET pointsBalance = ?
+                WHERE customerId = ?;
+            """, (new_balance, customer_id))
+            conn.commit()
+            return True
+    except sqlite3.Error as e:
+        print(f"Database error in update_rewards_balance: {e}")
+        return False
+    
 def create_order(customer_id: int | None = None) -> int | None:     ###Creates new order record and returns generated orderId
     try:
         with get_connection() as conn:
